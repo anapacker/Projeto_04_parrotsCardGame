@@ -1,0 +1,22 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Roboto;
+}
+
+main{
+    width: 100%;
+    background-color: #EEF9BF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    font-size: 56px;
+    color:#75B79E;
+    font-weight: 700;
+
+}
