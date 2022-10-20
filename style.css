@@ -27,7 +27,7 @@ h1{
 
 }
 
-.papagaio{
+.card{
     width: 100%;
     height: 100%;
     display: flex;
@@ -37,6 +37,10 @@ h1{
     border: 1px solid #99ceab;
     background-color: #99CEA8;
     position: absolute;
+    backface-visibility: hidden;
+    transition: all 1s ease;
+    transform-style: preserve-3d;
+
 }
 
 .carta {
@@ -50,4 +54,17 @@ h1{
 .carta img{
     width: 100px;
 
+}
+.back-card{
+
+    transform: rotateY(180deg);
+}
+
+
+.carta:hover .front-card{
+    transform: rotateY(0deg);
+
+}
+.carta:hover .back-card{
+    transform: rotateY(-180deg);
 }
