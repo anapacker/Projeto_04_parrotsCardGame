@@ -1,6 +1,6 @@
 let numDeCartas;
 
-const imagens = [
+const cartas = [
     'bobrossparrot.gif',
     'explodyparrot.gif',
     'fiestaparrot.git',
@@ -10,6 +10,8 @@ const imagens = [
     'unicornparrots.gif'
 
 ];
+
+const baralho = [];
 
 function perguntarQtdCartas() {
     numDeCartas = Number(prompt('Com quantas cartas deseja jogar?'));
@@ -22,21 +24,41 @@ function perguntarQtdCartas() {
 
     }
 }
-perguntarQtdCartas()
 
 
-function mostrarCartas{
+
+
+function mostrarCartas() {
+    for (let i = 0; i < (numDeCartas / 2); i++) {
+        let carta = cartas[i];
+
+        baralho.push(carta);
+        baralho.push(carta);
+    }
+
+    const ul = document.querySelector(".box-cartas");
+
+    for (let i = 0; i < baralho.length; i++) {
+        ul.innerHTML += `
+        <li class="carta">
+                <div class="front-card card">
+                    <img src="./imagens/back.png">
+                </div>
+
+                <div class="back-card card">
+                    <img src="./imagens/${baralho[i]}">
+                </div>
+            </li >
+            `;
+    }
 
 
 }
 
-    // const numDeCartas = [1]
+perguntarQtdCartas()
+mostrarCartas();
 
-
-    ///precisa ser um numero
-    //precisa ser par
-    //precisa repetir até ser um numero válio
-
+console.log(baralho);
 
 
 
