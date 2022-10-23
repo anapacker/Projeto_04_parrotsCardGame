@@ -3,15 +3,31 @@ let numDeCartas;
 const cartas = [
     'bobrossparrot.gif',
     'explodyparrot.gif',
-    'fiestaparrot.git',
+    'fiestaparrot.gif',
     'metalparrot.gif',
-    'revetitparrot.gif',
+    'revertitparrot.gif',
     'tripletsparrot.gif',
-    'unicornparrots.gif'
+    'unicornparrot.gif'
 
 ];
 
 const baralho = [];
+
+perguntarQtdCartas();
+preencherBaralhoAleatoriamente();
+mostrarCartas();
+
+
+console.log(baralho);
+
+
+//declarações de funções
+
+function randomizar() {
+    return Math.random() - 0.5;
+
+}
+
 
 function perguntarQtdCartas() {
     numDeCartas = Number(prompt('Com quantas cartas deseja jogar?'));
@@ -25,27 +41,18 @@ function perguntarQtdCartas() {
     }
 }
 
-
-
-
 function mostrarCartas() {
-    for (let i = 0; i < (numDeCartas / 2); i++) {
-        let carta = cartas[i];
-
-        baralho.push(carta);
-        baralho.push(carta);
-    }
 
     const ul = document.querySelector(".box-cartas");
 
     for (let i = 0; i < baralho.length; i++) {
         ul.innerHTML += `
-        <li class="carta">
-                <div class="front-card card">
+        <li class="card">
+                <div class="front-face face">
                     <img src="./imagens/back.png">
                 </div>
 
-                <div class="back-card card">
+                <div class="back-face face">
                     <img src="./imagens/${baralho[i]}">
                 </div>
             </li >
@@ -55,11 +62,12 @@ function mostrarCartas() {
 
 }
 
-perguntarQtdCartas()
-mostrarCartas();
+function preencherBaralhoAleatoriamente() {
+    for (let i = 0; i < (numDeCartas / 2); i++) {
+        let carta = cartas[i];
 
-console.log(baralho);
-
-
-
-
+        baralho.push(carta);
+        baralho.push(carta);
+    }
+    baralho.sort(randomizar);
+}
