@@ -64,10 +64,10 @@ ul{
     transform: rotateY(180deg);
   }
 
-  .card:hover .back-face {
+  .card-clicado .back-face {
     transform: rotateY(0deg);
   }
 
-  .card:hover .front-face {
+  .card-clicado .front-face {
     transform: rotateY(-180deg);
   }

@@ -47,7 +47,7 @@ function mostrarCartas() {
 
     for (let i = 0; i < baralho.length; i++) {
         ul.innerHTML += `
-        <li class="card">
+        <li class="card" onclick="clicarNaCarta(this,'${baralho[i]}')">
                 <div class="front-face face">
                     <img src="./imagens/back.png">
                 </div>
@@ -59,6 +59,12 @@ function mostrarCartas() {
             `;
     }
 
+
+}
+
+function clicarNaCarta(cartaClicada, nomeCarta) {
+    cartaClicada.classList.toggle("card-clicado");
+    console.log(nomeCarta);
 
 }
 
