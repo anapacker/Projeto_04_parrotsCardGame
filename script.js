@@ -17,14 +17,56 @@ perguntarQtdCartas();
 preencherBaralhoAleatoriamente();
 mostrarCartas();
 
+let primeiraCarta;
+let segundaCarta;
 
-console.log(baralho);
 
 
 //declarações de funções
 
 function randomizar() {
     return Math.random() - 0.5;
+
+}
+function desvirarCartas() {
+    primeiraCarta.classList.remove('card-clicado');
+    segundaCarta.classList.remove('card-clicado');
+
+    primeiraCarta = undefined;
+    segundaCarta = undefined;
+
+}
+function clicarNaCarta(elementoCartaClicada) {
+
+    if (primeiraCarta === undefined) {
+        primeiraCarta = elementoCartaClicada;
+
+
+    } else {
+        if (segundaCarta === undefined) {
+            segundaCarta = elementoCartaClicada;
+
+
+            if (primeiraCarta.innerHTML === segundaCarta.innerHTML) {
+
+                primeiraCarta = undefined;
+                segundaCarta = undefined;
+
+                console.log('acertou!');
+            } else {
+                console.log('errou!');
+                setTimeout(desvirarCartas, 1000);
+
+            }
+        }
+    }
+    // se duas cartas forem iguais permanecer virada
+    // só posso virar duas cartas
+    //// marcar a primeira carta
+    // marcar a segunda
+    //comparação da cartas
+
+    elementoCartaClicada.classList.toggle("card-clicado");
 
 }
 
@@ -62,12 +104,6 @@ function mostrarCartas() {
 
 }
 
-function clicarNaCarta(cartaClicada, nomeCarta) {
-    cartaClicada.classList.toggle("card-clicado");
-    console.log(nomeCarta);
-
-}
-
 function preencherBaralhoAleatoriamente() {
     for (let i = 0; i < (numDeCartas / 2); i++) {
         let carta = cartas[i];
@@ -77,3 +113,6 @@ function preencherBaralhoAleatoriamente() {
     }
     baralho.sort(randomizar);
 }
+
+
+
