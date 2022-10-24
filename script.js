@@ -17,10 +17,10 @@ perguntarQtdCartas();
 preencherBaralhoAleatoriamente();
 mostrarCartas();
 
-let primeiraCarta;
-let segundaCarta;
+let firstCard, secondCard;
 
-
+let wins = 0;
+let plays = 0;
 
 //declarações de funções
 
@@ -28,34 +28,43 @@ function randomizar() {
     return Math.random() - 0.5;
 
 }
-function desvirarCartas() {
-    primeiraCarta.classList.remove('card-clicado');
-    segundaCarta.classList.remove('card-clicado');
+function flipCard() {
+    firstCard.classList.remove('flip');
+    secondCard.classList.remove('flip');
 
-    primeiraCarta = undefined;
-    segundaCarta = undefined;
+    firstCard = undefined;
+    secondCard = undefined;
 
 }
-function clicarNaCarta(elementoCartaClicada) {
+function clicarNaCarta(flippedCardElement) {
 
-    if (primeiraCarta === undefined) {
-        primeiraCarta = elementoCartaClicada;
+    plays++;
+    if (firstCard === undefined) {
+        firstCard = flippedCardElement;
 
 
     } else {
-        if (segundaCarta === undefined) {
-            segundaCarta = elementoCartaClicada;
+        if (secondCard === undefined) {
+            secondCard = flippedCardElement;
 
 
-            if (primeiraCarta.innerHTML === segundaCarta.innerHTML) {
+            if (firstCard.innerHTML === secondCard.innerHTML) {
 
-                primeiraCarta = undefined;
-                segundaCarta = undefined;
+                wins = wins + 2;
+
+                firstCard = undefined;
+                secondCard = undefined;
+
+
+                if (wins === numDeCartas) {
+                    alert(`Você ganhou em ${plays} jogadas!`);
+                }
+
 
                 console.log('acertou!');
             } else {
                 console.log('errou!');
-                setTimeout(desvirarCartas, 1000);
+                setTimeout(flipCard, 1000);
 
             }
         }
@@ -65,8 +74,8 @@ function clicarNaCarta(elementoCartaClicada) {
     //// marcar a primeira carta
     // marcar a segunda
     //comparação da cartas
-
-    elementoCartaClicada.classList.toggle("card-clicado");
+    console.log(wins);
+    flippedCardElement.classList.toggle("flip");
 
 }
 
@@ -113,6 +122,7 @@ function preencherBaralhoAleatoriamente() {
     }
     baralho.sort(randomizar);
 }
+
 
 
 
